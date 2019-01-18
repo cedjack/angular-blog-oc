@@ -1,0 +1,19 @@
+<li [ngClass]="{
+  'list-group-item': true,
+  'list-group-item-success': post.loveIts > 0,
+  'list-group-item-danger': post.loveIts < 0
+ }">
+  le {{ post.created_at | date: 'd MMMM à hh:mm' }}
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.content }}</p>
+  <button class="btn btn-success" (click)="onLike()">
+    <span *ngIf="post.loveIts>0">{{post.loveIts}} </span>
+    <i class="fas fa-thumbs-up"></i></button>
+  &nbsp;
+  <button class="btn btn-danger" (click)="onDislike()">
+    <span *ngIf="post.loveIts<0">{{post.loveIts + (-post.loveIts * 2) }} </span>
+    <i class="fas fa-thumbs-down"></i></button>
+  &nbsp;
+  <button class="btn btn-warning" (click)="onRemovePost(post)"><i class="far fa-trash-alt"></i></button>
+
+</li>

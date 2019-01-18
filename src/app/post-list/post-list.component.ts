@@ -1,5 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Post} from '../models/post.model';
+import {Component, OnInit} from '@angular/core';
+import {Post} from '../models/Post.model';
+import {PostsService} from '../services/Post.service';
+import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-list',
@@ -8,11 +11,24 @@ import {Post} from '../models/post.model';
 })
 export class PostListComponent implements OnInit {
 
-  @Input() postList: Post[];
+  posts: Post[];
+  postSubscription: Subscription;
 
-  constructor() { }
+  constructor(private postsService: PostsService,
+              private router: Router) {
+  }
 
   ngOnInit() {
+    this.postSubscription = this.postsService.postsSubject.subscribe(
+      (posts) => {
+        this.posts = posts;
+      }
+    );
+    this.postsService.getPosts();
+  }
+
+  onNewPost() {
+    this.router.navigate(['/posts', 'new']);
   }
 
 }

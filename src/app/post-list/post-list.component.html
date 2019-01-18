@@ -1,16 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>Posts</h2>
+      <h4>Posts <button class="btn btn-primary text-center" (click)="onNewPost()"> <i class="fas fa-plus-circle"></i> Ajouter</button></h4>
+
       <ul class="list-group">
-        <app-post-list-item
-          *ngFor="let post of postList"
-            [title]="post.title"
-            [content]="post.content"
-            [loveIts]="post.loveIts"
-            [created_at]="post.created_at"
-        >
-        </app-post-list-item>
+        <app-single-post
+          *ngFor="let post of posts"
+            [post]="post">
+        </app-single-post>
       </ul>
     </div>
   </div>
