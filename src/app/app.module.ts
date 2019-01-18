@@ -7,6 +7,7 @@ import {PostListComponent} from './post-list/post-list.component';
 import {PostsService} from './services/Post.service';
 import {PostFormComponent} from './post-list/post-form/post-form.component';
 import {SinglePostComponent} from './post-list/single-post/single-post.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,8 @@ import {SinglePostComponent} from './post-list/single-post/single-post.component
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [

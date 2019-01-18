@@ -49,18 +49,42 @@ export class PostsService {
   }
 
   removePost(post: Post) {
-    this.posts.splice(post.index - 1, 1);
+    const postIndexToFind = this.posts.findIndex(
+      (postElement) => {
+        if (postElement === post) {
+          return true;
+        }
+      }
+    );
+    this.posts.splice(postIndexToFind, 1);
     this.emitPosts();
   }
 
   addLoveIts(post: Post) {
-    console.log(post.index);
-    this.posts[post.index - 1].loveIts += 1;
+    const postIndexToFind = this.posts.findIndex(
+      (postElement) => {
+        if (postElement === post) {
+          return true;
+        }
+      }
+    );
+    this.posts[postIndexToFind].loveIts += 1;
     this.emitPosts();
   }
 
   removeLoveIts(post: Post) {
-    this.posts[post.index - 1].loveIts -= 1;
+    const postIndexToFind = this.posts.findIndex(
+      (postElement) => {
+        if (postElement === post) {
+          return true;
+        }
+      }
+    );
+    this.posts[postIndexToFind].loveIts -= 1;
     this.emitPosts();
+  }
+
+  getIndexOfNewPost() {
+    return this.posts[this.posts.length - 1].index + 1;
   }
 }

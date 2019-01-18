@@ -25,7 +25,9 @@ export class SinglePostComponent implements OnInit {
   }
 
   onRemovePost() {
-    this.postsService.removePost(this.post);
+    if (confirm('Voulez-vous vraiment supprimer le post : \n' + this.post.title + ' ?')) {
+      this.postsService.removePost(this.post);
+    }
   }
 
 }

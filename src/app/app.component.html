@@ -2,7 +2,12 @@
   <div class="container-fluid">
     <div class="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="posts">Posts</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="posts"><i class="fas fa-home"></i> Posts</a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="posts/new"><i class="fas fa-plus-circle"></i> Nouveau Post</a>
+        </li>
       </ul>
     </div>
   </div>
