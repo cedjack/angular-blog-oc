@@ -8,6 +8,8 @@ import {PostsService} from './services/Post.service';
 import {PostFormComponent} from './post-list/post-form/post-form.component';
 import {SinglePostComponent} from './post-list/single-post/single-post.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MyOwnCustomMaterialModule} from './modules/my-own-custom-material/my-own-custom-material.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MyOwnCustomMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     PostsService

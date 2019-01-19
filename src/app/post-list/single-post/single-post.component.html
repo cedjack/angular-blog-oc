@@ -1,3 +1,38 @@
+<div class="example-container mat-elevation-z8">
+  <mat-card class="example-card" [ngStyle]="{'backgroundColor: green': post.loveIts > 0,  'backgroundColor: red': post.loveIts < 0}">
+    <mat-card-header>
+      <mat-card-title><h2>{{post.title}}</h2></mat-card-title>
+      <mat-card-subtitle>
+        <mat-icon *ngIf="post.loveIts>0" color="primary">sentiment_very_satisfied</mat-icon>
+        <mat-icon *ngIf="post.loveIts==0">sentiment_dissatisfied</mat-icon>
+        <mat-icon *ngIf="post.loveIts<0" color="warn">sentiment_very_dissatisfied</mat-icon>
+        le {{post.created_at | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <!-- <dt>Article:</dt> -->
+        <dd>{{post.content}}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-flat-button color="primary" (click)="onLike()">
+        <span *ngIf="post.loveIts>0">{{post.loveIts}} </span>
+        <mat-icon>thumb_up_alt</mat-icon>
+      </a>
+      &nbsp;
+      <a mat-flat-button color="warn" (click)="onDislike()">
+        <span *ngIf="post.loveIts<0">{{post.loveIts + (-post.loveIts * 2) }} </span>
+        <mat-icon>thumb_down_alt</mat-icon>
+      </a>
+      &nbsp;
+      <a mat-flat-button color="warn" (click)="onRemovePost(post)" class="pull-right">
+        <mat-icon>delete</mat-icon>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div style="margin: 5px"></div>
+<!--
 <li [ngClass]="{
   'list-group-item': true,
   'list-group-item-success': post.loveIts > 0,
@@ -17,5 +52,5 @@
   <div class="pull-right">
     <button class="btn btn-warning" (click)="onRemovePost(post)"><i class="far fa-trash-alt"></i></button>
   </div>
-
 </li>
+-->

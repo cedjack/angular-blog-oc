@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-    <h3>Ajout d'un post</h3>
-    <form [formGroup]="postForm" (ngSubmit)="onSavePost()">
+    <h3>Ajouter un article</h3>
+    <form class="myForm"
+      [formGroup]="postForm" (ngSubmit)="onSavePost()">
+      <!--
       <div class="form-group">
         <label for="title">Titre</label>
         <input type="text" formControlName="title" id="title" class="form-control" autofocus>
@@ -10,7 +12,16 @@
         <label for="content">Contenu du post</label>
         <input type="text" formControlName="content" id="content" class="form-control">
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="postForm.invalid">Enregistrer</button>
+      -->
+      <mat-form-field class="myFull-width">
+        <input matInput placeholder="Titre" type="text" formControlName="title" id="title">
+      </mat-form-field>
+      <mat-form-field class="myFull-width">
+        <textarea matInput rows="4" placeholder="Contenu" type="text" formControlName="content" id="content"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="postForm.invalid">Enregistrer</button>
     </form>
   </div>
 </div>
+
